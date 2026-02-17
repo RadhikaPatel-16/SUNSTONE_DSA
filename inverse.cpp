@@ -1,14 +1,25 @@
-  #include <iostream>
+#include <iostream>
+#include<vector>
 using namespace std;
-int main(){
-    int n,rev=0;
-    cin>>n;
-    int rev0;
-    while (n>0)
-    {
-        rev= rev*10+(n%10);
+vector<int> convert(int n){
+    vector<int> number;
+    while(n!=0){
+        int k=n%10;
+        number.push_back(k);
         n=n/10;
     }
-    cout<<rev;
+    return number;
+}
+int main() {
+    int n;
+    cin>>n;
+    vector<int> number=convert(n);
+    vector<int> ans(number.size()+1);
+    for(int i=0;i<number.size();i++){
+        ans[number[i]]=i+1;
+    }
+    for(int i=number.size();i>=1;i--){
+        cout<<ans[i];
+    }
     return 0;
 }
